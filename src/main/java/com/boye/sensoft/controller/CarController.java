@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import java.util.List;
 import java.util.Map;
 
@@ -29,13 +31,13 @@ public class CarController {
     //return 201 instead of 200
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/add-cars")
-    Car newCar(@RequestBody Car car) {
+    Car newCar(@RequestBody @Valid Car car) {
         return carServices.save(car);
     }
 
     // Find
     @GetMapping("/books/{id}")
-    Car findOneCar(@PathVariable Long id) {
+    Car findOneCar(@PathVariable @Min(1) Long id) {
             return carServices.findCarById(id)
                     .orElseThrow(() -> new CarNotFoundException(id));
     }
@@ -43,7 +45,7 @@ public class CarController {
 
     // Save or update
     @PutMapping("/books/{id}")
-    Car saveOrUpdateCar(@RequestBody Car car, @PathVariable Long id) {
+    Car saveOrUpdateCar(@RequestBody @Valid Car car, @PathVariable Long id) {
 
         return carServices.findCarById(id)
                 .map(x -> {
