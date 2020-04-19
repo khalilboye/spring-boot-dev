@@ -5,11 +5,12 @@ import com.boye.sensoft.error.CarNotFoundException;
 import com.boye.sensoft.error.CarUnSupportedFieldPatchException;
 import com.boye.sensoft.repositories.CarRepository;
 import com.boye.sensoft.services.CarServices;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.util.List;
@@ -18,6 +19,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("car")
 public class CarController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CarController.class);
+
 
     @Autowired
     private CarServices carServices ;
@@ -63,7 +67,7 @@ public class CarController {
     // update author only
     @PatchMapping("/books/{id}")
     Car patch(@RequestBody Map<String, String> update, @PathVariable Long id) {
-
+        LOGGER.debug("update or save car");
         return carServices.findCarById(id)
                 .map(x -> {
 
@@ -86,6 +90,7 @@ public class CarController {
 
     @DeleteMapping("/books/{id}")
     void deleteBook(@PathVariable Long id) {
+        LOGGER.debug("deleting car");
         carServices.deleteById(id);
     }
 
