@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Entity
@@ -12,8 +13,11 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
+    @NotEmpty(message = "Renseigner le libelle")
     private String libelle ;
+    @NotEmpty(message = "Renseigner la marque")
     private String marque ;
+    @NotEmpty(message = "Renseigner le modele")
     private String modele;
     private Date dateMiseCirculation ;
 
