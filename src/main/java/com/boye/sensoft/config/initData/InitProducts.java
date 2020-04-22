@@ -11,8 +11,9 @@ import java.util.Date;
 
 @Component
 @Order(3)
-public class InitProducts implements ApplicationRunner {
-
+public class InitProducts// implements ApplicationRunner
+ {
+/*
     public final CarRepository carRepository ;
 
     public InitProducts(CarRepository carRepository) {
@@ -25,4 +26,6 @@ public class InitProducts implements ApplicationRunner {
         carRepository.save(new Car("car2", "onda", "5fg", new Date()));
         carRepository.save(new Car("car3", "toyota", "yaris", new Date()));
     }
+
+ */
 }

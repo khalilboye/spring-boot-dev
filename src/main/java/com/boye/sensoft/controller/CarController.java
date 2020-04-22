@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("car")
+@RequestMapping("api")
 public class CarController {
 
     @Autowired
@@ -36,7 +36,7 @@ public class CarController {
     }
 
     // Find
-    @GetMapping("/books/{id}")
+    @GetMapping("/cars/{id}")
     Car findOneCar(@PathVariable @Min(1) Long id) {
             return carServices.findCarById(id)
                     .orElseThrow(() -> new CarNotFoundException(id));
@@ -44,7 +44,7 @@ public class CarController {
 
 
     // Save or update
-    @PutMapping("/books/{id}")
+    @PutMapping("/cars/{id}")
     Car saveOrUpdateCar(@RequestBody @Valid Car car, @PathVariable Long id) {
 
         return carServices.findCarById(id)
@@ -61,7 +61,7 @@ public class CarController {
     }
 
     // update author only
-    @PatchMapping("/books/{id}")
+    @PatchMapping("/cars/{id}")
     Car patch(@RequestBody Map<String, String> update, @PathVariable Long id) {
 
         return carServices.findCarById(id)
@@ -84,7 +84,7 @@ public class CarController {
 
     }
 
-    @DeleteMapping("/books/{id}")
+    @DeleteMapping("/cars/{id}")
     void deleteBook(@PathVariable Long id) {
         carServices.deleteById(id);
     }

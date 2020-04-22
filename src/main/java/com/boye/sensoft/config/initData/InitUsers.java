@@ -14,8 +14,10 @@ import java.util.Arrays;
 
 @Component
 @Order(2)
-public class InitUsers implements ApplicationRunner {
-    private final UserRepository userRepository;
+public class InitUsers
+       // implements ApplicationRunner
+{
+   /* private final UserRepository userRepository;
     private final RoleRepository roleRepository;
 
     public InitUsers(UserRepository userRepository, RoleRepository roleRepository) {
@@ -44,4 +46,6 @@ public class InitUsers implements ApplicationRunner {
         System.out.println("end.");
 
     }
+
+    */
 }

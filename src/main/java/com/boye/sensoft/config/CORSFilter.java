@@ -14,8 +14,8 @@ import java.io.IOException;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CORSFilter implements Filter {
 
-    @Value("${permitted-url}")
-    private String permittedUrl = "";
+   // @Value("${permitted-url}")
+    private String permittedUrl = "http://localhost:4200/";
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

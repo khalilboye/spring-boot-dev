@@ -12,8 +12,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Order(1)
-public class InitRoles implements ApplicationRunner {
-    private final RoleRepository roleRepository;
+public class InitRoles// implements ApplicationRunner
+{
+    /*private final RoleRepository roleRepository;
 
     public InitRoles(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
@@ -35,5 +36,7 @@ public class InitRoles implements ApplicationRunner {
             roleRepository.save(roleAdmin);
         }
     }
+
+     */
 
 }
