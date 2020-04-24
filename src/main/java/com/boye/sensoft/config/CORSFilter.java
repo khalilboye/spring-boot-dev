@@ -15,7 +15,7 @@ import java.io.IOException;
 public class CORSFilter implements Filter {
 
    // @Value("${permitted-url}")
-    private String permittedUrl = "http://localhost:4200/";
+    //private String permittedUrl = "http://localhost:4200/";
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -27,7 +27,7 @@ public class CORSFilter implements Filter {
 
         HttpServletResponse response = (HttpServletResponse) resp;
         HttpServletRequest request = (HttpServletRequest) req;
-        response.setHeader("Access-Control-Allow-Origin", permittedUrl);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Credentials", "true");

@@ -32,4 +32,8 @@ public class CarServices {
             carRepository.deleteById(id);
         }
     }
+
+    public List<Car> searchCar(String libelle) {
+        return  carRepository.findAllByLibelle(libelle);
+    }
 }

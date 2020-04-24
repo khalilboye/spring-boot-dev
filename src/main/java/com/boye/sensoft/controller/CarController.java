@@ -6,6 +6,7 @@ import com.boye.sensoft.error.CarUnSupportedFieldPatchException;
 import com.boye.sensoft.repositories.CarRepository;
 import com.boye.sensoft.services.CarServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +42,10 @@ public class CarController {
             return carServices.findCarById(id)
                     .orElseThrow(() -> new CarNotFoundException(id));
     }
-
+    @GetMapping("/search")
+    List<Car> searchCar(@Param("libelle") String libelle){
+        return carServices.searchCar(libelle);
+    }
 
     // Save or update
     @PutMapping("/cars/{id}")
