@@ -1,6 +1,5 @@
 node {
    // This is to demo github action	
-   def mvn = tool (name: 'maven3', type: 'maven') + '/bin/mvn'
    stage('SCM Checkout'){
     // Clone repo
 	git branch: 'master', 
@@ -8,9 +7,9 @@ node {
    
    }
    	
-   stage('Mvn Package'){
+   stage('Compile-Package'){
 	   // Build using maven
-	   
+	   def mvn = tool (name: 'maven3', type: 'maven') + '/bin/mvn'
 	   sh "${mvn} clean package deploy"
    }
 }
