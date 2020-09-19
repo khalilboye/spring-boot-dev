@@ -8,7 +8,7 @@ node {
    	
    stage('Compile-Package'){
 	   // Build using maven
-	   def mvn = tool (name: 'maven-3', type: 'maven') + '/bin/mvn'
-	   sh "${mvn} clean package deploy"
+	   def mvn = tool name: 'maven-3', type: 'maven''
+	   sh "${mvn}/bin/mvn package"
    }
 }
