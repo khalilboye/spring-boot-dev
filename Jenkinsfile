@@ -6,7 +6,10 @@ node {
    }
    stage('Compile-Package'){
 	   // Build using maven
-	   def MvnHome = tool name: 'maven-3', type: 'maven'
-     sh "${MvnHome}/bin/mvn pakage"
+	checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+		  doGenerateSubmoduleConfigurations: false, 
+		  extensions: [[$class: 'PerBuildTag']], 
+		  submoduleCfg: [], 
+		  userRemoteConfigs: [[url: 'https://github.com/khalilboye/spring-boot-dev.git']]])
    }
    }
