@@ -60,4 +60,14 @@ public class Car {
     public void setDateMiseCirculation(Date dateMiseCirculation) {
         this.dateMiseCirculation = dateMiseCirculation;
     }
+
+    public Car() {
+    }
+
+    public Car(@NotEmpty(message = "Renseigner le libelle") String libelle, @NotEmpty(message = "Renseigner la marque") String marque, @NotEmpty(message = "Renseigner le modele") String modele, Date dateMiseCirculation) {
+        this.libelle = libelle;
+        this.marque = marque;
+        this.modele = modele;
+        this.dateMiseCirculation = dateMiseCirculation;
+    }
 }
