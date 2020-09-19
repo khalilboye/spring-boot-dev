@@ -1,15 +1,16 @@
-pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2' 
-        }
-    }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'mvn -B -DskipTests clean package' 
-            }
-        }
-    }
+node {
+   // This is to demo github action	
+   def mvn = tool (name: 'maven3', type: 'maven') + '/bin/mvn'
+   stage('SCM Checkout'){
+    // Clone repo
+	git branch: 'master', 
+		url: 'https://github.com/khalilboye/spring-boot-dev.git'
+   
+   }
+   	
+   stage('Mvn Package'){
+	   // Build using maven
+	   
+	   sh "${mvn} clean package deploy"
+   }
 }
